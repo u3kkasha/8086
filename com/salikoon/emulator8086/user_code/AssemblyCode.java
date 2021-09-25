@@ -1,33 +1,29 @@
 // بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 package com.salikoon.emulator8086.user_code;
+import java.util.ArrayList;
+
 public class AssemblyCode 
 {
-    private static String[] userCode;
+    private static ArrayList<String> userCode;
     
     public static void setCode(String[] input)
     {
-          userCode=input;
-          trimAllLinesOfUserCode();
-         convertToUpperCaseAllLinesOfUserCode();
-       
+         userCode=
+         java.util.Arrays.
+          stream(input).parallel()
+          .map(String::strip)
+          .map(String::toUpperCase)
+          .collect
+          (java.util.stream.Collectors
+          .toCollection(ArrayList::new)
+          );
     }
     public static String getCode(int lineNumber)
     {
-        return userCode[lineNumber];
+        return userCode.get(lineNumber);
     }
-    private static void trimAllLinesOfUserCode()
-    {
-    	for(int index=0; index<userCode.length; index++)
-    	userCode[index]=userCode[index].trim();
-    	
-    }
-    private static void convertToUpperCaseAllLinesOfUserCode()
-    {
-    		for(int index=0; index<userCode.length; index++)
-    	userCode[index]=userCode[index].toUpperCase();
- 
-    	
-    }
- } //end of class
+    
+    
+} //end of class
 
