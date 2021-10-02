@@ -10,20 +10,26 @@ public class AssemblyCode
     public static void setCode(String[] input)
     {
          userCode=
-         java.util.Arrays.
-          stream(input).parallel()
+             java.util.Arrays
+          .stream(input).parallel()
           .map(String::strip)
           .map(String::toUpperCase)
-          .collect
-          (java.util.stream.Collectors
+          .collect(
+              java.util.stream
+          .Collectors
           .toCollection(ArrayList::new)
           );
     }
     public static String getCode(int lineNumber)
     {
+        if(lineNumber==0) throw new IndexOutOfBoundsException("0 is not a valid index");
         return userCode.get(lineNumber);
     }
     
+    public static int getCodeLength()
+    {
+        return userCode.size();
+    }
     
 } //end of class
 

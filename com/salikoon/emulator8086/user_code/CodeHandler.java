@@ -17,5 +17,13 @@ public interface CodeHandler // intra-module facade for Code sub-module
     {
         return AssemblyCode.getCode(lineNumber);
     }
+    static int getCodeLength()
+    {
+        return AssemblyCode.getCodeLength();
+    }
+    static int getLastLineNumberOfCode()
+    {
+        return getCodeLength-1;
+    }
 }    
     
