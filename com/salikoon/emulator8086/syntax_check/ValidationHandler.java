@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 import java.util.stream.Collectors;
 import java.util.Optional;
 import com.salikoon.emulator8086.parser.Tokeniser;
+import com.salikoon.emulator8086.user_code.CodeHandler;
 
     /** This class is the facade for the Validation Module
     @author Watheeq
@@ -13,7 +14,7 @@ import com.salikoon.emulator8086.parser.Tokeniser;
 
 public class ValidationHandler
 {
-    /** This function checks the ASL-8086 code for syntax errors.
+        /** This function checks the ASL-8086 code for syntax errors.
         @author Watheeq
         @param code A single user written ASL-8086 line of code
         @return a List of SyntaxSlip records
@@ -39,10 +40,17 @@ public class ValidationHandler
     
         public static Optional<SyntaxSlip> checkLine(int lineNumber)
     {
-        String[] tokens=Tokeniser.tokeniseCode(lineOfCode);
+        String[] tokens
+        =Tokeniser.tokeniseCode(
+                CodeHandler.getCode(lineNumber)
+                );
         var opcode=token[0];
-        var mistake=ValidationLibrary.class.getMethod(opcode).invoke(null,tokens);
-        
+         /*check number of operand
+        check if source is valid
+        check if destination is valid
+        check operand specific*/
+       
+        var mistake=ValidationLibrary.class.getMethod(opcode).invoke(null,tokens);              
     }
     
 }// end of class
