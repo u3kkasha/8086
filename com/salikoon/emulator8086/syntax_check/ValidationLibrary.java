@@ -3,15 +3,22 @@ package com.salikoon.emulator8086.syntax_check;
 import com.salikoon.emulator8086.parser.Parser;
 import java.util.Optional;
 
+    /**This class stores syntax validation/checking information for various opcodes
+    @author Watheeq
+    */
+
 public class ValidationLibrary
 {
-    
-    public static Optional<String> MOV(String[] tokens)
+    public static int getNumberOfOperands(String opcode)
     {
-        var tokenMistake=Validator.findMistakeInTokens(3,tokens);
-        if (tokenMistake.isPresent()) return tokenMistake;
-        
-        switch(
+        return switch(opcode)
+        {
+            case "MOV",
+            "ADD","SUB","MUL","DIV",
+            "AND","OR","XOR","TEST"      -> 2;
+            case "INC","DEC","NEG","NOT" -> 1;
+            default -> throw new IllegalArgumentException("Opcode is unknown");
+        };
     }
     
     

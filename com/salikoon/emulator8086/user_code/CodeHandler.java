@@ -24,7 +24,7 @@ public interface CodeHandler // intra-module facade for Code sub-module
     }
     static int getLastLineNumberOfCode()
     {
-        return getCodeLength-1;
+        return getCodeLength()-1;
     }
 }    
     

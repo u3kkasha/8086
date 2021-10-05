@@ -1,9 +1,10 @@
 //بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيْمِ
 package com.salikoon.emulator8086.syntax_check;
 
-import java.util.stream.Stream;
+import java.util.stream.IntStream;
 import java.util.stream.Collectors;
 import java.util.Optional;
+import java.util.List;
 import com.salikoon.emulator8086.parser.Tokeniser;
 import com.salikoon.emulator8086.user_code.CodeHandler;
 
@@ -12,7 +13,7 @@ import com.salikoon.emulator8086.user_code.CodeHandler;
     */
     
 
-public class ValidationHandler
+public class ValidationHandler // it should mainly use functions implemented in other classe
 {
         /** This function checks the ASL-8086 code for syntax errors.
         @author Watheeq
@@ -26,7 +27,7 @@ public class ValidationHandler
         
         return 
         IntStream.range(1,CodeHandler.getLastLineNumberOfCode())
-        .maptoObj(ValidationHandler::checkLine)
+        .mapToObj(ValidationHandler::checkLine)
         .flatMap(Optional::stream) //remove empty Optionals
         .collect(Collectors.toList());
               
@@ -44,13 +45,11 @@ public class ValidationHandler
         =Tokeniser.tokeniseCode(
                 CodeHandler.getCode(lineNumber)
                 );
-        var opcode=token[0];
-         /*check number of operand
-        check if source is valid
-        check if destination is valid
-        check operand specific*/
-       
-        var mistake=ValidationLibrary.class.getMethod(opcode).invoke(null,tokens);              
-    }
+        var opcode=tokens[0];
+        var mistake=Validator.findMistakeInTokens(tokens);
+        if(mistake.isPresent()) return Optional.of( new SyntaxSlip(lineNumber,mistake.get() ) );         
+        else return Optional.empty();
+    
+    }    
     
 }// end of class
