@@ -25,14 +25,14 @@ public class Validator
             if(! Parser.Analyser.isValidOperand(tokens[index]) )
                 return Optional.of(tokens[index]+" is an unrecognised operand");
        
-        else return Optional.empty();
+            else return Optional.<String>empty();
         }
         
         catch(IllegalArgumentException exception)
         {
-
+            return Optional.of(opcode+" is either invalid or not yet implemented");
         }
-      return Optional.of(opcode+" is either invalid or not yet implemented");
+        throw new RuntimeException("Impossible line-executed");
     }//end of function
     
     

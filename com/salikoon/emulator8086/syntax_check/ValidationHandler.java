@@ -45,10 +45,9 @@ public class ValidationHandler // it should mainly use functions implemented in 
         =Tokeniser.tokeniseCode(
                 CodeHandler.getCode(lineNumber)
                 );
-        var opcode=tokens[0];
         var mistake=Validator.findMistakeInTokens(tokens);
         if(mistake.isPresent()) return Optional.of( new SyntaxSlip(lineNumber,mistake.get() ) );         
-        else return Optional.empty();
+        else return Optional.<SyntaxSlip>empty();
     
     }    
     

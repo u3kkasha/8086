@@ -14,9 +14,9 @@ public class ValidationLibrary
         return switch(opcode)
         {
             case "MOV",
-            "ADD","SUB","MUL","DIV",
+            "ADD","SUB",
             "AND","OR","XOR","TEST"      -> 2;
-            case "INC","DEC","NEG","NOT" -> 1;
+            case "INC","DEC","NEG","NOT","MUL","DIV"-> 1;
             default -> throw new IllegalArgumentException("Opcode is unknown");
         };
     }
