@@ -8,7 +8,7 @@ import java.util.List;
 import com.salikoon.emulator8086.parser.Tokeniser;
 import com.salikoon.emulator8086.user_code.CodeHandler;
 
-    /** This class is the facade for the Validation Module
+    /** This class is the facade for the Syntax Check package
     @author Watheeq
     */
     
@@ -27,6 +27,7 @@ public class ValidationHandler // it should mainly use functions implemented in 
         
         return 
         IntStream.range(1,CodeHandler.getLastLineNumberOfCode())
+        .parallel()
         .mapToObj(ValidationHandler::checkLine)
         .flatMap(Optional::stream) //remove empty Optionals
         .collect(Collectors.toList());

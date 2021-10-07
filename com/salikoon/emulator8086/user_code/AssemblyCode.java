@@ -9,16 +9,13 @@ public class AssemblyCode
     
     public static void setCode(String[] input)
     {
-         userCode=
+         var list=
              java.util.Arrays
           .stream(input).parallel()
           .map(String::strip)
           .map(String::toUpperCase)
-          .collect(
-              java.util.stream
-          .Collectors
-          .toCollection(ArrayList::new)
-          );
+          .toList();
+          userCode=new ArrayList<String>(list);
     }
     public static String getCode(int lineNumber)
     {
