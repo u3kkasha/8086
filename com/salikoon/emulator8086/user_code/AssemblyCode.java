@@ -14,7 +14,7 @@ public class AssemblyCode
           .stream(input).parallel()
           .map(String::strip)
           .map(String::toUpperCase)
-          .toList();
+          .collect(java.util.stream.Collectors.toList());
           userCode=new ArrayList<String>(list);
     }
     public static String getCode(int lineNumber)

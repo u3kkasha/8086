@@ -11,14 +11,26 @@ public class ValidationLibrary
 {
     public static int getNumberOfOperands(String opcode)
     {
-        return switch(opcode)
+        switch(opcode)
         {
-            case "MOV",
-            "ADD","SUB",
-            "AND","OR","XOR","TEST"      -> 2;
-            case "INC","DEC","NEG","NOT","MUL","DIV"-> 1;
-            default -> throw new IllegalArgumentException("Opcode is unknown");
-        };
+            case "MOV":
+            case "ADD":
+            case "SUB":
+            case "AND":
+            case "OR":
+            case "XOR":
+            case "TEST":
+             return 2;
+            case "INC":
+            case "DEC":
+            case "NEG":
+            case "NOT":
+            case "MUL":
+            case "DIV":
+            return 1;
+            default: 
+            throw new IllegalArgumentException("Opcode is unknown");
+        }
     }
     
     
