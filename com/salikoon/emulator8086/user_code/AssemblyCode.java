@@ -1,6 +1,7 @@
 // بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 package com.salikoon.emulator8086.user_code;
+
 import java.util.ArrayList;
 
 public class AssemblyCode 
@@ -9,13 +10,7 @@ public class AssemblyCode
     
     public static void setCode(String[] input)
     {
-         var list=
-             java.util.Arrays
-          .stream(input).parallel()
-          .map(String::strip)
-          .map(String::toUpperCase)
-          .collect(java.util.stream.Collectors.toList());
-          userCode=new ArrayList<String>(list);
+           userCode=CodeCleaner.clean(input);
     }
     public static String getCode(int lineNumber)
     {

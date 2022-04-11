@@ -26,7 +26,7 @@ public class SyntaxSlip{
     {
         return mistake;
     }
-    @Override
+    @Override 
     public String toString()
     {
         return java.text.MessageFormat.format("line-number: {0} mistake: {1}",lineNumber,mistake);
