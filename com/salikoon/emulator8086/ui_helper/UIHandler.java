@@ -7,16 +7,18 @@ import com.salikoon.emulator8086.user_code.CodeHandler;
 import com.salikoon.emulator8086.syntax_check.ValidationHandler;
 import java.util.List;
 import com.salikoon.emulator8086.syntax_check.SyntaxSlip;
-public interface UIHandler
-{
 
-    static List<SyntaxSlip> setCode(String[] code)
+public class UIHandler
+{
+    public static boolean finishedExecution=false;
+    
+    public static List<SyntaxSlip> setCode(String[] code)
     {
-        CodeHandler.setCode(code);
+        CodeHandler.setCode(code);     
         return ValidationHandler.checkCode();
     }
 
-    static UIPacket execute()
+    public static UIPacket execute()
     {
         return ExecutionHandler.execute();
     }
