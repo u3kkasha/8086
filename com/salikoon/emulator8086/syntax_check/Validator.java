@@ -2,6 +2,7 @@
 package com.salikoon.emulator8086.syntax_check;
 import java.util.Optional;
 import com.salikoon.emulator8086.parser.Parser;
+import com.salikoon.emulator8086.user_code.CodeHandler;
 
     /** This class contains the functions which are used to validate tokens
     @author Watheeq
@@ -10,7 +11,7 @@ import com.salikoon.emulator8086.parser.Parser;
 
 public class Validator
 {
-    public enum OperandEnums{SegmentRegister,NonSegmentRegister,MemoryAddress,ImmediateValue}
+   
     
     /**
     This function checks a single tokenised line of code for invalid opcode or invalid operands
@@ -34,18 +35,24 @@ public class Validator
          then this loop will be executed upon token[1] and turn[2]
         */
         for(int index=1;index<expectedNumberOfTokens;index++) 
-            if(! Parser.Analyser.isValidOperand(tokens[index]) )
+            if(! Parser.Analyser.isValidOperand(tokens[index]) && !CodeHandler.labelExists(tokens[index]))
                 return Optional.of("Operand "+tokens[index]+" is an unrecognised operand");
        
-            else return Optional.<String>empty();
+            
         }
         
         catch(IllegalArgumentException exception)
         {
             return Optional.of("Opcode "+opcode+" is either invalid or not yet implemented");
         }
-        throw new RuntimeException("Impossible line-executed");
+        
+            return Optional.<String>empty();
     }//end of function
+    
+    
+   
+    
+        
     
     
 }//end of class

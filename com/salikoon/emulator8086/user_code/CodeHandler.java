@@ -30,6 +30,12 @@ public interface CodeHandler // intra-module facade for Code sub-module
     {
         return SymbolCharts.getLineNumberOfLabel(label);
     }
+    static boolean labelExists(String label)
+    {
+        return SymbolCharts.isValidLabel(label);
+    }
+    
+    
     
     private static void storeCode(String[] rawCode)
     {

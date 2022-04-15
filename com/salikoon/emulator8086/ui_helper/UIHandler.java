@@ -23,4 +23,8 @@ public class UIHandler
         return ExecutionHandler.execute();
     }
 
+    public static boolean executionIncomplete()
+    {
+        return !finishedExecution;
+    }
 }//end of file
