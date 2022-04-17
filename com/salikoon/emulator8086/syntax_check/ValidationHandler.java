@@ -40,15 +40,20 @@ public class ValidationHandler // it should mainly use functions implemented in 
         */
     
         public static Optional<SyntaxSlip> checkLine(int lineNumber)
-    {
+        {
         String[] tokens
         =Tokeniser.tokeniseCode(
                 CodeHandler.getCode(lineNumber)
                 );
         var mistake=Validator.findMistakeInTokens(tokens);
         if(mistake.isPresent()) return Optional.of( new SyntaxSlip(lineNumber,mistake.get() ) );         
-        else return Optional.<SyntaxSlip>empty();
+        else return Optional.<SyntaxSlip>empty();    
+        }    
     
-    }    
+        public static java.util.List<String> getAllImplementedInstructions()
+        {
+            return ValidationLibrary.getListOfImplementedInstructions();
+        }
+    
     
 }// end of class

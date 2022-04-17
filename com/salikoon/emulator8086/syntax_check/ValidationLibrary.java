@@ -42,6 +42,9 @@ public class ValidationLibrary
         
     }
     
-    
+    public static java.util.List<String> getListOfImplementedInstructions()
+    {
+        return new java.util.ArrayList<String>(numberOfOperands.keySet());
+    }
     
 }//end of class
