@@ -1,0 +1,108 @@
+{
+  "InstructionList": [
+    {
+      "Instruction": "ADD",
+      "Syntax": "ADD destination,source",
+      "Description": "Equivalent to destination=source+destination",
+      "Source": ["Register","Memory","Immediate value"],
+      "Destination": ["Register","Memory"],
+      "FlagsChanged": ["Carry", "Overflow", "Auxiliary","Parity","Zero","Sign"],
+      "Examples": [
+      {"Type":"Register-Register","Specimen":"ADD AX,CX"},
+      {"Type":"Register-Memory","Specimen":"ADD [F034H],DX"},
+      {"Type":"Register-Immediate Value","Specimen":"ADD AX,33"},
+      {"Type":"Memory-Immediate Value","Specimen":"ADD [BX],10010B"}
+      ]
+    },
+    {
+      "Instruction": "AND",
+      "Syntax": "AND destination,source",
+      "Description": "Equivalent to destination=source & destination (‘&’ is bitwise AND operation)",
+      "Source": ["Register","Memory","Immediate value"],
+      "Destination": ["Register","Memory"],
+      "FlagsChanged": ["Carry", "Overflow","Parity","Zero","Sign"],
+      "Examples": [
+      {"Type":"Register-Register","Specimen":"AND AX,CX"},
+      {"Type":"Register-Memory","Specimen":"AND [F034H],DX"},
+      {"Type":"Register-Immediate Value","Specimen":"AND AX,33"},
+      {"Type":"Memory-Immediate Value","Specimen":"AND [BX],10010B"}
+      ]
+    },
+    {
+      "Instruction": "DIV",
+      "Syntax": "DIV divider",
+      "Description": "if divisor is a byte then AL=floor(AX/divisor) AH=remainder but if divisor is a double-byte then  AX=floor( ( DX*255 + AX)/divisor ) DX=remainder",
+      "Source": ["Register","Memory"],
+      "Destination": ["AX","DX"],
+      "FlagsChanged": ["All flags are undefined"],
+      "Examples": [
+       {"Type":"Register","Specimen":"DIV BX"},
+       {"Type":"Memory","Specimen":"DIV [F807H]"}
+      ]
+    },  
+    {
+      "Instruction": "INC",
+      "Syntax": "INC destination",
+      "Description": "destination = destination + 1 (adds one to destination)",
+      "Source": null,
+      "Destination": ["Register","Memory"],
+      "FlagsChanged": ["Carry (undefined)", "Overflow", "Auxiliary","Parity","Zero","Sign"],
+      "Examples": [
+       {"Type":"Register","Specimen":"INC AX"},
+       {"Type":"Memory","Specimen":"INC [F807H]"}
+      ]
+    },
+    {
+      "Instruction": "DEC",
+      "Syntax": "DEC destination",
+      "Description": "destination = destination - 1 (substracts one from destination)",
+      "Source": null,
+      "Destination": ["Register","Memory"],
+      "FlagsChanged": ["Carry (undefined)", "Overflow", "Auxiliary","Parity","Zero","Sign"],
+      "Examples": [
+       {"Type":"Register","Specimen":"DEC DX"},
+       {"Type":"Memory","Specimen":"DEC [F257H]"}
+      ]
+    },   
+     {
+      "Instruction": "MOV",
+      "Syntax": "MOV destination,source",
+      "Description": "Moves a byte or double-byte from the source to the destination",
+      "Source": ["Register","Memory","Immediate value"],
+      "Destination": ["Register","Memory"],
+      "FlagsChanged": null,
+      "Examples": [
+      {"Type":"Register-Register","Specimen":"MOV AX,CX"},
+      {"Type":"Register-Memory","Specimen":"MOV [F034H],DX"},
+      {"Type":"Register-Immediate Value","Specimen":"MOV AX,33"},
+      {"Type":"Memory-Immediate Value","Specimen":"MOV [BX],10010B"}
+      ]
+    },   
+    {
+      "Instruction": "MUL",
+      "Syntax": "MUL multiplier",
+      "Description": "This is unsigned multiplication if multiplier is a byte then AX=AL x multiplier but if multiplier is a double-byte then  product=AX x multiplier where AX=lower part of product DX=higher part of product",
+      "Source": ["Register","Memory"],
+      "Destination": ["AX","DX"],
+      "FlagsChanged": ["Carry", "Overflow"],
+      "Examples": [
+      {"Type":"Register","Specimen":"MUL BX"},
+      {"Type":"Memory","Specimen":"MUL [F807H]"}
+      ]
+    },
+    {
+      "Instruction": "SUB",
+      "Syntax": "SUB destination,source",
+      "Description": "Equivalent to destination=destination-source",
+      "Source": ["Register","Memory","Immediate value"],
+      "Destination": ["Register","Memory"],
+      "FlagsChanged": ["Carry", "Overflow", "Auxiliary", "Parity", "Zero","Sign"],
+      "Examples": [
+      {"Type":"Register-Register","Specimen":"SUB AX,CX"},
+      {"Type":"Register-Memory","Specimen":"SUB [F034H],DX"},
+      {"Type":"Register-Immediate Value","Specimen":"SUB AX,33"},
+      {"Type":"Memory-Immediate Value","Specimen":"SUB [BX],10010B"}
+      ]
+    }    
+    ]
+}
