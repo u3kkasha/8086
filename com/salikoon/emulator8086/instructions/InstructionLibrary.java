@@ -47,6 +47,11 @@ public class InstructionLibrary implements DataTransferInstructions, ArithmeticA
            default:
               throw new IllegalArgumentException(java.text.MessageFormat.format("INT {0} is not supported",interruptNumber));
         }
+    
+    
+          MemoryHandler.setValue(StringParameter.InterruptFlag,(short)0);
+          MemoryHandler.setValue(StringParameter.TrapFlag,(short)0);
+    
     }
     
 }//end of class

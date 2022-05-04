@@ -12,8 +12,10 @@ public interface FlagInstructions
        MemoryHandler.setValue(StringParameter.DirectionFlag, (short) 1); 
     }
 
-    public default void STI(){
-       MemoryHandler.setValue(StringParameter.InterruptFlag, (short) 1); 
+    public default void CMC(){
+       var bit=MemoryHandler.getValue(StringParameter.CarryFlag);
+       bit=1-bit; //invert the bit
+       MemoryHandler.setValue(StringParameter.CarryFlag,bit); 
     }
     
     public default void CLC(){
