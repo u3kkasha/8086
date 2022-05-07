@@ -23,7 +23,7 @@ public class SymbolExtractor {
             then the labels are extracted and paired with the line-numbers
         */
         
-        return IntStream.range(1,code.length-1)
+        return IntStream.range(1,code.length)
         .parallel()
         .filter( lineNumber -> containsLabel(code[lineNumber]))
         .boxed()

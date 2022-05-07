@@ -143,6 +143,17 @@
       "Examples": [
       {"Type":null,"Specimen":"INT 21H"}
       ]
+    },
+    {
+      "Instruction": "JA or JNBE",
+      "Syntax": "JA label or JNBE label",
+      "Description": "(Unsigned comparison) Jump if Above or Jump if not below nor equal",
+      "Source": null,
+      "Destination": null,
+      "FlagsChanged": null,
+      "Examples": [
+      {"Type":null,"Specimen":"CMP AX,BX \n JA label2"}
+      ]
     },     
      {
       "Instruction": "MOV",

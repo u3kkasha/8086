@@ -14,7 +14,7 @@ public interface FlagInstructions
 
     public default void CMC(){
        var bit=MemoryHandler.getValue(StringParameter.CarryFlag);
-       bit=1-bit; //invert the bit
+       bit=(short)(1-bit); //invert the bit
        MemoryHandler.setValue(StringParameter.CarryFlag,bit); 
     }
     
